@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Overlay para o menu no mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar (Menu Lateral) -->
+    <aside
+      class="sidebar"
+      id="sidebar"
+      role="navigation"
+      aria-label="Menu Principal"
+    >
+      <nav class="menu">
+        <a href="#" role="link"><span>🏠</span> Início</a>
+        <a href="#" role="link"><span>👤</span> Perfil</a>
+        <a href="#" role="link"><span>⚙️</span> Configurações</a>
+        <a href="#" role="link"><span>📄</span> Documentos</a>
+        <a href="#" role="link"><span>❓</span> Ajuda</a>
+      </nav>
+      <div class="sidebar-footer">
+        <img src="https://via.placeholder.com/80" alt="Logo ou Imagem" />
+      </div>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+      <!-- Cabeçalho -->
+      <header class="header">
+        <!-- Botão menu hamburguer para o mobile -->
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Abrir menu de navegação"
+        >
+          <span class="hamburger"></span>
+        </button>
+        <h1>Cadastro de Usuário</h1>
+      </header>
+
+      <!-- Área principal dos formulários -->
+      <main class="form-area">
+        <!-- 1. Informações Pessoais -->
+        <section class="card">
+          <h2>Informações Pessoais</h2>
+          <form id="cadastroForm">
+            <div class="form-group">
+              <label for="nome">Nome Completo *</label>
+              <input type="text" id="nome" name="nome" required />
+            </div>
+
+            <div class="form-group">
+              <label for="dataNascimento">Data de Nascimento</label>
+              <input type="date" id="dataNascimento" name="dataNascimento" />
+            </div>
+
+            <div class="form-group">
+              <label for="sexo">Sexo</label>
+              <select id="sexo" name="sexo">
+                <option>Masculino</option>
+                <option>Feminino</option>
+                <option>Outro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="cpf">CPF *</label>
+              <input
+                type="text"
+                id="cpf"
+                name="cpf"
+                placeholder="000.000.000-00"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="rg">RG</label>
+              <input type="text" id="rg" name="rg" />
+            </div>
+
+            <div class="form-group">
+              <label for="estadoCivil">Estado Civil</label>
+              <select id="estadoCivil" name="estadoCivil">
+                <option>Solteiro(a)</option>
+                <option>Casado(a)</option>
+                <option>Divorciado(a)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="fotoPerfil">Foto de Perfil</label>
+              <input
+                type="file"
+                id="fotoPerfil"
+                name="fotoPerfil"
+                accept="image/*"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="assinaturaDigital">Assinatura Digital</label>
+              <input
+                type="file"
+                id="assinaturaDigital"
+                name="assinaturaDigital"
+                accept="image/*"
+              />
+            </div>
+
+            <!-- 2. Contato -->
+            <h2>Contato</h2>
+
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="telefone">Telefone</label>
+              <input
+                type="text"
+                id="telefone"
+                name="telefone"
+                placeholder="(00) 0000-0000"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="celular">Celular *</label>
+              <input
+                type="text"
+                id="celular"
+                name="celular"
+                placeholder="(00) 00000-0000"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="endereco">Endereço</label>
+              <textarea id="endereco" name="endereco"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="cep">CEP</label>
+              <input type="text" id="cep" name="cep" placeholder="00000-000" />
+            </div>
+
+            <div class="form-group">
+              <label for="pais">País</label>
+              <select id="pais" name="pais">
+                <option>Brasil</option>
+                <option>Outro</option>
+              </select>
+            </div>
+
+            <!-- 3. Credenciais de Acesso -->
+            <h2>Credenciais de Acesso</h2>
+
+            <div class="form-group">
+              <label for="usuario">Nome de Usuário</label>
+              <input type="text" id="usuario" name="usuario" />
+            </div>
+
+            <div class="form-group">
+              <label for="senha">Senha</label>
+              <input type="password" id="senha" name="senha" />
+            </div>
+
+            <div class="form-group">
+              <label for="confirmSenha">Confirmação de Senha</label>
+              <input type="password" id="confirmSenha" name="confirmSenha" />
+            </div>
+
+            <div class="form-group">
+              <label for="perguntaSecreta">Pergunta Secreta</label>
+              <select id="perguntaSecreta" name="perguntaSecreta">
+                <option>Nome do primeiro animal de estimação</option>
+                <option>Nome da mãe</option>
+                <option>Cidade onde nasceu</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="respostaSecreta">Resposta Secreta</label>
+              <input type="text" id="respostaSecreta" name="respostaSecreta" />
+            </div>
+
+            <div class="form-group checkbox-group">
+              <input type="checkbox" id="termos" name="termos" />
+              <label for="termos">Aceito os Termos de Uso</label>
+            </div>
+
+            <!-- 4. Informações Profissionais -->
+            <h2>Informações Profissionais</h2>
+
+            <div class="form-group">
+              <label for="ocupacao">Ocupação</label>
+              <input type="text" id="ocupacao" name="ocupacao" />
+            </div>
+
+            <div class="form-group">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" />
+            </div>
+
+            <div class="form-group">
+              <label for="cnpj">CNPJ da Empresa</label>
+              <input
+                type="text"
+                id="cnpj"
+                name="cnpj"
+                placeholder="00.000.000/0000-00"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="cargo">Cargo</label>
+              <input type="text" id="cargo" name="cargo" />
+            </div>
+
+            <div class="form-group">
+              <label for="salario">Salário Aproximado</label>
+              <input type="number" id="salario" name="salario" />
+            </div>
+
+            <div class="form-group">
+              <label for="dataAdmissao">Data de Admissão</label>
+              <input type="date" id="dataAdmissao" name="dataAdmissao" />
+            </div>
+
+            <!-- 5. Preferências e Redes Sociais -->
+            <h2>Preferências e Redes Sociais</h2>
+
+            <div class="form-group">
+              <label for="generoMusical">Gênero Musical Favorito</label>
+              <input type="text" id="generoMusical" name="generoMusical" />
+            </div>
+
+            <div class="form-group checkbox-group">
+              <label>Hobbies</label>
+              <input
+                type="checkbox"
+                id="futebol"
+                name="hobbies"
+                value="Futebol"
+              />
+              <label for="futebol">Futebol</label>
+              <input
+                type="checkbox"
+                id="leitura"
+                name="hobbies"
+                value="Leitura"
+              />
+              <label for="leitura">Leitura</label>
+              <input
+                type="checkbox"
+                id="viagens"
+                name="hobbies"
+                value="Viagens"
+              />
+              <label for="viagens">Viagens</label>
+              <input
+                type="checkbox"
+                id="musica"
+                name="hobbies"
+                value="Música"
+              />
+              <label for="musica">Música</label>
+            </div>
+
+            <div class="form-group">
+              <label for="facebook">Facebook</label>
+              <input type="url" id="facebook" name="facebook" />
+            </div>
+
+            <div class="form-group">
+              <label for="instagram">Instagram</label>
+              <input type="url" id="instagram" name="instagram" />
+            </div>
+
+            <div class="form-group">
+              <label for="linkedin">LinkedIn</label>
+              <input type="url" id="linkedin" name="linkedin" />
+            </div>
+
+            <div class="form-group radio-group">
+              <label>Notificações via E-mail</label>
+              <input
+                type="radio"
+                id="notificacoesSim"
+                name="notificacoes"
+                value="Sim"
+              />
+              <label for="notificacoesSim">Sim</label>
+              <input
+                type="radio"
+                id="notificacoesNao"
+                name="notificacoes"
+                value="Não"
+              />
+              <label for="notificacoesNao">Não</label>
+            </div>
+
+            <!-- 6. Pagamento e Dados Bancários -->
+            <h2>Pagamento e Dados Bancários</h2>
+
+            <div class="form-group">
+              <label for="cartao">Número do Cartão de Crédito</label>
+              <input
+                type="text"
+                id="cartao"
+                name="cartao"
+                placeholder="0000 0000 0000 0000"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="vencimentoCartao">Data de Vencimento</label>
+              <input
+                type="month"
+                id="vencimentoCartao"
+                name="vencimentoCartao"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="cvv">Código de Segurança (CVV)</label>
+              <input type="number" id="cvv" name="cvv" />
+            </div>
+
+            <div class="form-group">
+              <label for="banco">Banco</label>
+              <select id="banco" name="banco">
+                <option>Banco do Brasil</option>
+                <option>Caixa</option>
+                <option>Bradesco</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="agencia">Agência</label>
+              <input type="text" id="agencia" name="agencia" />
+            </div>
+
+            <div class="form-group">
+              <label for="conta">Conta Corrente</label>
+              <input type="text" id="conta" name="conta" />
+            </div>
+
+            <div class="form-group">
+              <label for="tipoConta">Tipo de Conta</label>
+              <select id="tipoConta" name="tipoConta">
+                <option>Poupança</option>
+                <option>Corrente</option>
+              </select>
+            </div>
+
+            <!-- 7. Outros Recursos -->
+            <h2>Outros Recursos</h2>
+
+            <div class="form-group">
+              <label for="documentoPDF">Upload de Documento PDF</label>
+              <input
+                type="file"
+                id="documentoPDF"
+                name="documentoPDF"
+                accept=".pdf"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="controleDeslizante">Aceitação dos Termos</label>
+              <input
+                type="range"
+                id="controleDeslizante"
+                name="controleDeslizante"
+                min="0"
+                max="1"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="horarioContato"
+                >Horário de Preferência para Contato</label
+              >
+              <input type="time" id="horarioContato" name="horarioContato" />
+            </div>
+
+            <div class="form-group">
+              <label for="dependentes">Número de Dependentes</label>
+              <input type="number" id="dependentes" name="dependentes" />
+            </div>
+
+            <div class="form-group">
+              <label for="corFavorita">Cor Favorita</label>
+              <input type="color" id="corFavorita" name="corFavorita" />
+            </div>
+
+            <div class="form-group">
+              <label for="comentarios">Comentários ou Observações</label>
+              <textarea id="comentarios" name="comentarios"></textarea>
+            </div>
+
+            <!-- Botões -->
+            <div class="buttons">
+              <button type="submit" class="btn-save">Salvar Formulário</button>
+              <button type="reset" class="btn-clear">Limpar Formulário</button>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <!-- Rodapé -->
+      <footer class="footer">
+        <p>&copy; 2025 - Sistema de Cadastro</p>
+      </footer>
+    </div>
+
+    <!-- Chamada do JS -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

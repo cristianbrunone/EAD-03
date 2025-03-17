@@ -1,0 +1,316 @@
+/* ==========================
+   Reset básico
+========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  position: relative;
+}
+
+/* ==========================
+   Overlay para menu no mobile
+========================== */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* ==========================
+   Sidebar
+========================== */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.sidebar nav a span {
+  margin-right: 10px;
+}
+
+.sidebar-footer {
+  text-align: center;
+}
+
+.sidebar-footer img {
+  width: 80px;
+  border-radius: 50%;
+}
+
+/* Sidebar oculta no mobile */
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* ==========================
+   Cabeçalho
+========================== */
+.header {
+  background-color: #34495e;
+  color: #fff;
+  padding: 20px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 250px;
+  right: 0;
+  z-index: 500;
+  transition: left 0.3s ease;
+}
+
+/* ==========================
+   Botão menu hamburger
+========================== */
+.menu-toggle {
+  display: none; /* Só aparece no mobile */
+  position: absolute;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1500;
+}
+
+.hamburger {
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  display: block;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  background: #fff;
+  width: 30px;
+  height: 3px;
+  display: block;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before {
+  top: -10px;
+}
+
+.hamburger::after {
+  bottom: -10px;
+}
+
+.menu-toggle.active .hamburger {
+  background-color: transparent;
+}
+
+.menu-toggle.active .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.menu-toggle.active .hamburger::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+/* ==========================
+   Área principal do conteúdo
+========================== */
+.main-content {
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 250px);
+  transition: margin-left 0.3s ease;
+}
+
+/* ==========================
+   Área dos formulários
+========================== */
+.form-area {
+  padding: 120px 20px 100px 20px; /* Espaço para cabeçalho e rodapé fixos */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==========================
+   Cards dos formulários
+========================== */
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+/* ==========================
+   Grupos de formulário
+========================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ==========================
+   Botões do formulário
+========================== */
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-save {
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-save:hover {
+  background-color: #219150;
+}
+
+.btn-clear {
+  background-color: #f39c12;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-clear:hover {
+  background-color: #d68910;
+}
+
+/* ==========================
+   Rodapé
+========================== */
+.footer {
+  background-color: #34495e;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+  left: 250px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================
+   RESPONSIVO - MOBILE
+========================== */
+@media (max-width: 768px) {
+  /* Sidebar recolhida no mobile */
+  .sidebar {
+    transform: translateX(-100%);
+    width: 250px;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Overlay ativo */
+  .overlay.active {
+    display: block;
+  }
+
+  /* Menu hamburger visível no mobile */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Cabeçalho ocupa a largura toda */
+  .header {
+    left: 0;
+  }
+
+  /* Conteúdo principal ocupa a largura total */
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* Rodapé ocupa a largura toda */
+  .footer {
+    left: 0;
+    right: 0;
+  }
+}
