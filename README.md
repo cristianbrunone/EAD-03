@@ -118,7 +118,7 @@ Projeto desenvolvido como parte da atividade EAD do curso SENAI. Trata-se de um 
 
 ## 📚 Créditos
 
-Desenvolvido para fins educacionais no curso **EAD SENAI**.
+Desenvolvido para fins educacionais no curso **ADS SENAI**.
 
 ---
 
