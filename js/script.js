@@ -1,36 +1,46 @@
-// Elementos do menu
+// ==================== ELEMENTOS DO MENU ====================
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
 
-// Abrir/Fechar menu no mobile
+// ==================== MENU HAMBURGUER ====================
+
+// Clique no botão hamburguer
 menuToggle.addEventListener("click", () => {
   sidebar.classList.toggle("open");
   overlay.classList.toggle("active");
-  menuToggle.classList.toggle("active");
 
   const expanded = menuToggle.getAttribute("aria-expanded") === "true";
   menuToggle.setAttribute("aria-expanded", !expanded);
+
+  // Esconde o botão hamburguer quando abre a sidebar
+  if (sidebar.classList.contains("open")) {
+    menuToggle.style.display = "none";
+  }
 });
 
-// Fecha ao clicar no overlay
+// Clique no overlay para fechar o menu
 overlay.addEventListener("click", () => {
   sidebar.classList.remove("open");
   overlay.classList.remove("active");
-  menuToggle.classList.remove("active");
+
+  // Exibe o botão hamburguer novamente
+  menuToggle.style.display = "flex";
   menuToggle.setAttribute("aria-expanded", false);
 });
 
-// Máscaras de campos
+
+// ==================== MÁSCARAS DE CAMPOS ====================
+
 function maskInput(selector, maskFunction) {
   const element = document.querySelector(selector);
   if (!element) return;
+
   element.addEventListener("input", (e) => {
     e.target.value = maskFunction(e.target.value);
   });
 }
 
-// Funções de máscaras
 const masks = {
   cpf(value) {
     return value
@@ -75,7 +85,9 @@ maskInput("#cep", masks.cep);
 maskInput("#cnpj", masks.cnpj);
 maskInput("#cartao", masks.cartao);
 
-// Validação básica de formulário
+
+// ==================== VALIDAÇÃO DO FORMULÁRIO ====================
+
 const form = document.getElementById("cadastroForm");
 
 form.addEventListener("submit", function (e) {
@@ -110,3 +122,47 @@ form.addEventListener("submit", function (e) {
     form.reset();
   }
 });
+
+
+// ==================== CONTROLE DOS STEPS ====================
+let currentStep = 0;
+const steps = document.querySelectorAll(".step");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+const submitBtn = document.getElementById("submitBtn");
+const progressBar = document.getElementById("progressBar");
+
+function showStep(index) {
+  steps.forEach((step, i) => {
+    step.classList.toggle("active", i === index);
+  });
+
+  // Atualiza botões
+  prevBtn.style.display = index === 0 ? "none" : "inline-block";
+  nextBtn.style.display = index === steps.length - 1 ? "none" : "inline-block";
+  submitBtn.classList.toggle("d-none", index !== steps.length - 1);
+
+  // Atualiza a barra de progresso
+  const progress = ((index + 1) / steps.length) * 100;
+  progressBar.style.width = `${progress}%`;
+  progressBar.innerText = `Passo ${index + 1} de ${steps.length}`;
+}
+
+// Botões
+nextBtn.addEventListener("click", () => {
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    showStep(currentStep);
+  }
+});
+
+prevBtn.addEventListener("click", () => {
+  if (currentStep > 0) {
+    currentStep--;
+    showStep(currentStep);
+  }
+});
+
+// Inicializa
+showStep(currentStep);
+
