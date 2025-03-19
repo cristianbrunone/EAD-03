@@ -1,11 +1,10 @@
 // ==================== ELEMENTOS DO MENU ====================
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
-const overlay = document.getElementById("overlay");
+const overlay = document.querySelector(".overlay");
 
 // ==================== MENU HAMBURGUER ====================
 
-// Clique no botão hamburguer
 menuToggle.addEventListener("click", () => {
   sidebar.classList.toggle("open");
   overlay.classList.toggle("active");
@@ -13,22 +12,18 @@ menuToggle.addEventListener("click", () => {
   const expanded = menuToggle.getAttribute("aria-expanded") === "true";
   menuToggle.setAttribute("aria-expanded", !expanded);
 
-  // Esconde o botão hamburguer quando abre a sidebar
   if (sidebar.classList.contains("open")) {
     menuToggle.style.display = "none";
   }
 });
 
-// Clique no overlay para fechar o menu
 overlay.addEventListener("click", () => {
   sidebar.classList.remove("open");
   overlay.classList.remove("active");
 
-  // Exibe o botão hamburguer novamente
   menuToggle.style.display = "flex";
   menuToggle.setAttribute("aria-expanded", false);
 });
-
 
 // ==================== MÁSCARAS DE CAMPOS ====================
 
@@ -77,14 +72,12 @@ const masks = {
   },
 };
 
-// Aplicação das máscaras
 maskInput("#cpf", masks.cpf);
 maskInput("#telefone", masks.telefone);
 maskInput("#celular", masks.celular);
 maskInput("#cep", masks.cep);
 maskInput("#cnpj", masks.cnpj);
 maskInput("#cartao", masks.cartao);
-
 
 // ==================== VALIDAÇÃO DO FORMULÁRIO ====================
 
@@ -123,32 +116,29 @@ form.addEventListener("submit", function (e) {
   }
 });
 
-
 // ==================== CONTROLE DOS STEPS ====================
+
 let currentStep = 0;
 const steps = document.querySelectorAll(".step");
 const nextBtn = document.getElementById("nextBtn");
 const prevBtn = document.getElementById("prevBtn");
 const submitBtn = document.getElementById("submitBtn");
-const progressBar = document.getElementById("progressBar");
+const progressBar = document.querySelector(".progress-bar");
 
 function showStep(index) {
   steps.forEach((step, i) => {
     step.classList.toggle("active", i === index);
   });
 
-  // Atualiza botões
   prevBtn.style.display = index === 0 ? "none" : "inline-block";
   nextBtn.style.display = index === steps.length - 1 ? "none" : "inline-block";
   submitBtn.classList.toggle("d-none", index !== steps.length - 1);
 
-  // Atualiza a barra de progresso
   const progress = ((index + 1) / steps.length) * 100;
   progressBar.style.width = `${progress}%`;
   progressBar.innerText = `Passo ${index + 1} de ${steps.length}`;
 }
 
-// Botões
 nextBtn.addEventListener("click", () => {
   if (currentStep < steps.length - 1) {
     currentStep++;
@@ -163,6 +153,4 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
-// Inicializa
 showStep(currentStep);
-

@@ -4,6 +4,17 @@
 html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f0f0;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
 }
 
 h1 {
@@ -11,18 +22,7 @@ h1 {
   font-size: 1.4rem;
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: #f0f0f0;
-  color: #333333;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.9rem;
-}
-
-/* ----------- Sidebar ----------- */
+/* -------- Sidebar -------- */
 .sidebar {
   position: fixed;
   top: 0;
@@ -34,46 +34,54 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: none !important;
   z-index: 1000;
   padding-top: 1rem;
   transition: transform 0.3s ease;
   border-right: 1px solid #333;
 }
 
-.sidebar a {
-  color: #e0e0e0;
-  text-decoration: none;
-  padding: 0.65rem 1rem;
+.sidebar.open {
+  transform: translateX(0);
+}
 
+.sidebar-links a {
+  color: #e0e0e0;
   display: flex;
   align-items: center;
+  padding: 0.65rem 1rem;
+  text-decoration: none;
   font-size: 0.85rem;
   transition: background-color 0.2s ease, color 0.2s ease;
   border-radius: 0.5rem;
 }
 
-.sidebar a:hover {
+.sidebar-links a:hover {
   background-color: #333;
 }
 
-.sidebar img {
+.sidebar-footer img {
   max-width: 80%;
   margin: 0 auto 1rem;
 }
 
-/* ----------- Conteúdo Principal ----------- */
+/* -------- Conteúdo Principal -------- */
 .main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   margin-left: 250px;
-  padding: 1.5rem;
   transition: margin-left 0.3s ease;
   background-color: #f9f9f9;
+  min-height: 100vh;
 }
 
-/* ----------- Cabeçalho ----------- */
+.main-container {
+  margin-top: 80px;
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+/* -------- Cabeçalho -------- */
 header,
 .app-header {
   display: flex;
@@ -89,13 +97,31 @@ header,
   top: 0;
   left: 250px;
   width: calc(100% - 250px);
-  margin: 0;
   padding: 0 1rem;
   z-index: 1040;
-  box-shadow: none;
 }
 
-/* ----------- Rodapé ----------- */
+.menu-toggle {
+  margin-right: auto;
+  margin-left: 1rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background-color: #444;
+}
+
+/* -------- Rodapé -------- */
 .footer-fixo {
   background-color: #212121;
   color: #ffffff;
@@ -104,12 +130,12 @@ header,
   font-size: 0.8rem;
   position: fixed;
   bottom: 0;
-  width: calc(100% - 250px);
   left: 250px;
+  width: calc(100% - 250px);
   z-index: 1030;
 }
 
-/* ----------- Cartões ----------- */
+/* -------- Cartões -------- */
 .card {
   margin: 2rem 0;
   border-radius: 0.75rem;
@@ -120,10 +146,6 @@ header,
   font-size: 0.9rem;
   min-height: 200px;
   padding: 1rem;
-}
-
-.margin-top {
-  padding-top: 0.04rem;
 }
 
 .card:hover {
@@ -143,7 +165,11 @@ header,
   padding: 0.75rem 1rem;
 }
 
-/* ----------- Formulários ----------- */
+.margin-top {
+  padding-top: 0.04rem;
+}
+
+/* -------- Formulários -------- */
 form label {
   font-weight: 500;
   margin-bottom: 0.3rem;
@@ -156,9 +182,9 @@ form label {
   font-size: 1rem;
 }
 
-form input,
-form select,
-form textarea {
+input,
+select,
+textarea {
   border-radius: 0.4rem;
   border: 1px solid #cccccc;
   background-color: #ffffff;
@@ -168,9 +194,9 @@ form textarea {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-form input:focus,
-form select:focus,
-form textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   border-color: #444;
   box-shadow: 0 0 0 0.25rem rgba(68, 68, 68, 0.25);
   outline: none;
@@ -180,16 +206,54 @@ textarea {
   resize: vertical;
 }
 
-/* ----------- Botões ----------- */
-.btn-salvar {
+.form-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 300px;
+}
+
+/* -------- Botões -------- */
+.btn-primary,
+.btn-secondary,
+.btn-salvar,
+.btn-limpar {
   padding: 0.5rem 1.25rem;
   font-size: 0.85rem;
   font-weight: 500;
   border-radius: 0.4rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #ffffff;
+  border: 1px solid #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-salvar {
   background-color: #198754;
   color: #ffffff;
-  border: none;
-  transition: all 0.3s ease;
 }
 
 .btn-salvar:hover {
@@ -197,14 +261,8 @@ textarea {
 }
 
 .btn-limpar {
-  padding: 0.5rem 1.25rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  border-radius: 0.4rem;
   background-color: #ffc107;
   color: #212529;
-  border: none;
-  transition: all 0.3s ease;
 }
 
 .btn-limpar:hover {
@@ -212,117 +270,18 @@ textarea {
   color: #ffffff;
 }
 
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.btn-primary:hover {
-  background-color: #0069d9;
-}
-
-/* ----------- Overlay Mobile ----------- */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: transparent;
-  display: none;
-  z-index: 1030;
-}
-
-.overlay.active {
-  display: block;
-}
-
-.menu-toggle {
-  margin-right: auto;
-  margin-left: 1rem;
-  width: 40px;
-  height: 40px;
+.botao-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #333;
-  color: #ffffff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: none;
-  transition: background-color 0.3s ease;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
-.menu-toggle:hover {
-  background-color: #444;
+.botoes-direita {
+  display: flex;
+  gap: 1rem;
 }
 
-/* ----------- Responsividade ----------- */
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-    width: 250px;
-    height: 100%;
-    z-index: 1000;
-    box-shadow: none;
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  header,
-  .app-header {
-    left: 0;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .menu-toggle {
-    margin: 0 1rem;
-    position: absolute;
-    left: 1rem;
-  }
-
-  .main-content {
-    margin-left: 0;
-    padding-top: 1.2rem;
-    padding-right: 0;
-    padding-left: 0;
-    padding-bottom: 100px;
-  }
-
-  .card {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .botao-container {
-    margin-bottom: 180px;
-  }
-
-  .footer-fixo {
-    left: 0;
-    width: 100%;
-  }
-
-  #menuToggle {
-    display: flex;
-  }
-}
-
-/* ----------- Estilo do Stepper / Wizard ----------- */
-.step {
-  display: none;
-}
-
-.step.active {
-  display: block;
-}
-
-/* ----------- Barra de Progresso ----------- */
+/* -------- Barra de Progresso -------- */
 .progress {
   margin-top: 2rem;
   height: 20px;
@@ -337,50 +296,186 @@ textarea {
   color: #fff;
   font-size: 0.85rem;
   font-weight: 500;
-  display: block;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14%;
   line-height: 20px;
 }
 
-/* Posição absoluta para sobreposição */
-.progress-text-desktop,
-.progress-text-mobile {
-  position: absolute;
+/* -------- Overlay Mobile -------- */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1030;
 }
 
-.progress-text-mobile {
+/* CONTÊINER PRINCIPAL */
+
+.preferences-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Espaço ENTRE AS COLUNAS, NÃO ENTRE INPUTS */
+  margin-bottom: 10px;
+}
+
+/* COLUNAS */
+.preferences-column,
+.social-networks {
+  flex: 1 1 400px;
+  flex-direction: column;
+}
+
+/* LABELS */
+.preferences-column label,
+.social-networks label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem; /* Aproxima o label do input */
+}
+
+/* INPUTS */
+.preferences-column input[type="text"],
+.social-networks input[type="text"],
+.preferences-column select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.4rem;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  height: 38px; /* Altura consistente para todos */
+  box-sizing: border-box;
+}
+
+/* HOBBIES */
+.hobbies-options {
+  display: flex;
+  flex-direction: row; /* Em linha */
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hobbies-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background-color: #f9f9f9;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.hobbies-options label:hover {
+  background-color: #eee;
+}
+
+/* TÍTULO HOBBIES */
+.label-icon {
+  margin-top: 1rem; /* Afastar o título do input acima */
+}
+
+/* -------- Responsividade -------- */
+@media (max-width: 768px) {
+  .preferences-grid {
+    flex-direction: column;
+  }
+
+  .preferences-column {
+    flex: 1 1 100%;
+  }
+  .sidebar {
+    transform: translateX(-100%);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .overlay.active {
+    display: block;
+  }
+
+  .social-networks {
+    flex-direction: column;
+  }
+
+  /* Remove scroll horizontal no body */
+  body {
+    overflow-x: hidden;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .main-container {
+    padding: 1rem;
+  }
+
+  .card {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 500px; /* Evita estourar a tela */
+  }
+
+  .footer-fixo {
+    left: 0;
+    width: 100%;
+  }
+
+  .app-header {
+    left: 0;
+    width: 100%;
+  }
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 900;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* Botão Menu */
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background-color: #444;
+}
+
+/* -------- Stepper (Wizard) -------- */
+.step {
   display: none;
 }
 
-.progress-text-desktop {
-  display: inline;
-}
-
-@media (max-width: 768px) {
-  .progress-text-mobile {
-    display: inline;
-  }
-
-  .progress-text-desktop {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .btn-salvar,
-  .btn-limpar,
-  .btn-primary,
-  .btn-secondary {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.75rem;
-  }
-
-  .btn-salvar i,
-  .btn-limpar i {
-    font-size: 0.9rem;
-  }
-
-  .d-flex.gap-3 button {
-    flex: none;
-  }
+.step.active {
+  display: block;
 }
