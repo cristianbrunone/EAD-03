@@ -1,408 +1,512 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cadastro de Usuário</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
-</head>
+  <body>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <nav class="sidebar-links" aria-label="Menu lateral">
+        <ul class="list">
+          <li>
+            <a href="#"><i class="ri-home-3-line"></i> Início</a>
+          </li>
+          <li>
+            <a href="#"><i class="ri-user-line"></i> Perfil</a>
+          </li>
+          <li>
+            <a href="#"><i class="ri-settings-3-line"></i> Configurações</a>
+          </li>
+          <li>
+            <a href="#"><i class="ri-question-line"></i> Ajuda</a>
+          </li>
+          <li>
+            <a href="#"><i class="ri-logout-box-r-line"></i> Sair</a>
+          </li>
+        </ul>
+        <hr />
+      </nav>
+      <div class="sidebar-footer">
+        <img src="assets/senai.png" alt="Logo do Senai" />
+      </div>
+    </aside>
 
-<body>
+    <!-- Overlay Mobile -->
+    <div class="overlay"></div>
 
-  <!-- Sidebar -->
-  <aside id="sidebar" class="sidebar">
-    <nav class="sidebar-links" aria-label="Menu lateral">
-      <ul>
-        <li><a href="#"><i class="ri-home-3-line"></i> Início</a></li>
-        <li><a href="#"><i class="ri-user-line"></i> Perfil</a></li>
-        <li><a href="#"><i class="ri-settings-3-line"></i> Configurações</a></li>
-        <li><a href="#"><i class="ri-question-line"></i> Ajuda</a></li>
-        <li><a href="#"><i class="ri-logout-box-r-line"></i> Sair</a></li>
-      </ul>
-      <hr />
-    </nav>
-    <div class="sidebar-footer">
-      <img src="assets/senai.png" alt="Logo do Senai" />
+    <!-- Conteúdo Principal -->
+    <div class="main-content">
+      <!-- Cabeçalho -->
+      <header class="app-header">
+        <button id="menuToggle" class="menu-toggle" aria-label="Abrir menu">
+          <i class="ri-menu-line"></i>
+        </button>
+        <h1>Cadastro de Usuário</h1>
+      </header>
+
+      <!-- Área Principal -->
+      <main class="main-container">
+        <!-- Barra de Progresso -->
+        <section class="progress-section">
+          <div class="progress">
+            <div class="progress-bar">1 de 7</div>
+          </div>
+        </section>
+
+        <!-- Formulário -->
+        <section aria-label="Formulário de Cadastro">
+          <form id="cadastroForm" class="form-cadastro">
+            <!-- Passo 1 -->
+            <fieldset class="step active card">
+              <legend class="card-header">Informações Pessoais</legend>
+              <div class="card-body form-grid">
+                <div class="form-group">
+                  <label for="nome"
+                    ><i class="ri-user-line"></i> Nome Completo</label
+                  >
+                  <input type="text" id="nome" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="nascimento"
+                    ><i class="ri-calendar-line"></i> Data de Nascimento</label
+                  >
+                  <input type="date" id="nascimento" />
+                </div>
+
+                <div class="form-group">
+                  <label for="sexo"
+                    ><i class="ri-user-heart-line"></i> Sexo</label
+                  >
+                  <select id="sexo">
+                    <option>Masculino</option>
+                    <option>Feminino</option>
+                    <option>Outro</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="cpf"><i class="ri-profile-line"></i> CPF</label>
+                  <input type="text" id="cpf" placeholder="000.000.000-00" />
+                </div>
+
+                <div class="form-group">
+                  <label for="rg"><i class="ri-file-user-line"></i> RG</label>
+                  <input type="text" id="rg" />
+                </div>
+
+                <div class="form-group">
+                  <label for="estadoCivil"
+                    ><i class="ri-team-line"></i> Estado Civil</label
+                  >
+                  <select id="estadoCivil">
+                    <option>Solteiro(a)</option>
+                    <option>Casado(a)</option>
+                    <option>Divorciado(a)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="fotoPerfil"
+                    ><i class="ri-image-line"></i> Foto de Perfil</label
+                  >
+                  <input type="file" id="fotoPerfil" />
+                </div>
+
+                <div class="form-group">
+                  <label for="assinaturaDigital"
+                    ><i class="ri-edit-2-line"></i> Assinatura Digital</label
+                  >
+                  <input type="file" id="assinaturaDigital" />
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Passo 2 -->
+            <fieldset class="step card">
+              <legend class="card-header">Contato</legend>
+              <div class="card-body form-grid">
+                <div class="form-group">
+                  <label for="email"><i class="ri-mail-line"></i> E-mail</label>
+                  <input type="email" id="email" />
+                </div>
+
+                <div class="form-group">
+                  <label for="telefone"
+                    ><i class="ri-phone-line"></i> Telefone</label
+                  >
+                  <input type="text" id="telefone" />
+                </div>
+
+                <div class="form-group">
+                  <label for="celular"
+                    ><i class="ri-smartphone-line"></i> Celular</label
+                  >
+                  <input type="text" id="celular" />
+                </div>
+
+                <div class="form-group">
+                  <label for="endereco"
+                    ><i class="ri-map-pin-line"></i> Endereço</label
+                  >
+                  <input
+                    type="text"
+                    id="endereco"
+                    placeholder="Digite seu endereço"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="cep"
+                    ><i class="ri-map-pin-time-line"></i> CEP</label
+                  >
+                  <input type="text" id="cep" />
+                </div>
+
+                <div class="form-group">
+                  <label for="pais"><i class="ri-earth-line"></i> País</label>
+                  <select id="pais">
+                    <option>Brasil</option>
+                    <option>Outro</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Passo 3 -->
+            <fieldset class="step card">
+              <legend class="card-header">Credenciais de Acesso</legend>
+              <div class="card-body form-grid">
+                <div class="form-group">
+                  <label for="usuario"
+                    ><i class="ri-user-line"></i> Nome de Usuário</label
+                  >
+                  <input type="text" id="usuario" />
+                </div>
+
+                <div class="form-group">
+                  <label for="senha"
+                    ><i class="ri-lock-password-line"></i> Senha</label
+                  >
+                  <input type="password" id="senha" />
+                </div>
+
+                <div class="form-group">
+                  <label for="confirmaSenha"
+                    ><i class="ri-lock-unlock-line"></i> Confirmação de
+                    Senha</label
+                  >
+                  <input type="password" id="confirmaSenha" />
+                </div>
+
+                <div class="form-group">
+                  <label for="perguntaSecreta"
+                    ><i class="ri-question-line"></i> Pergunta Secreta</label
+                  >
+                  <select id="perguntaSecreta">
+                    <option>Nome do primeiro animal de estimação</option>
+                    <option>Nome da mãe</option>
+                    <option>Melhor amigo de infância</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="respostaSecreta"
+                    ><i class="ri-key-line"></i> Resposta Secreta</label
+                  >
+                  <input type="text" id="respostaSecreta" />
+                </div>
+
+                <div
+                  id="aceita-termos-container"
+                  class="form-group checkbox-container"
+                >
+                  <label for="aceitaTermos" class="checkbox-label">
+                    <input type="checkbox" id="aceitaTermos" />
+                    Aceito os Termos de Uso
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Passo 4 -->
+            <fieldset class="step card">
+              <legend class="card-header">Informações Profissionais</legend>
+              <div class="card-body form-grid">
+                <div class="form-group">
+                  <label for="ocupacao"
+                    ><i class="ri-briefcase-line"></i> Ocupação</label
+                  >
+                  <input type="text" id="ocupacao" />
+                </div>
+
+                <div class="form-group">
+                  <label for="empresa"
+                    ><i class="ri-building-line"></i> Empresa</label
+                  >
+                  <input type="text" id="empresa" />
+                </div>
+
+                <div class="form-group">
+                  <label for="cnpj"
+                    ><i class="ri-file-text-line"></i> CNPJ da Empresa</label
+                  >
+                  <input type="text" id="cnpj" />
+                </div>
+
+                <div class="form-group">
+                  <label for="cargo"
+                    ><i class="ri-user-star-line"></i> Cargo</label
+                  >
+                  <input type="text" id="cargo" />
+                </div>
+
+                <div class="form-group">
+                  <label for="salario"
+                    ><i class="ri-money-dollar-circle-line"></i> Salário
+                    Aproximado</label
+                  >
+                  <input type="number" id="salario" />
+                </div>
+
+                <div class="form-group">
+                  <label for="admissao"
+                    ><i class="ri-calendar-check-line"></i> Data de
+                    Admissão</label
+                  >
+                  <input type="date" id="admissao" />
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Passo 5 -->
+            <fieldset class="step card">
+              <legend class="card-header">Preferências e Redes Sociais</legend>
+              <div class="card-body form-grid">
+                <div class="form-group">
+                  <label><i class="ri-gamepad-line"></i> Hobbies</label>
+                  <div class="hobbies-options">
+                    <label
+                      ><input type="checkbox" id="futebol" /> Futebol</label
+                    >
+                    <label
+                      ><input type="checkbox" id="leitura" /> Leitura</label
+                    >
+                    <label
+                      ><input type="checkbox" id="viagens" /> Viagens</label
+                    >
+                    <label><input type="checkbox" id="musica" /> Música</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="generoMusical"
+                    ><i class="ri-music-2-line"></i> Gênero Musical
+                    Favorito</label
+                  >
+                  <input
+                    type="text"
+                    id="generoMusical"
+                    placeholder="Ex: Rock, Jazz, MPB..."
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="facebook"
+                    ><i class="ri-facebook-box-fill"></i> Facebook</label
+                  >
+                  <input type="text" id="facebook" placeholder="@usuario" />
+                </div>
+
+                <div class="form-group">
+                  <label for="instagram"
+                    ><i class="ri-instagram-line"></i> Instagram</label
+                  >
+                  <input type="text" id="instagram" placeholder="@usuario" />
+                </div>
+
+                <div class="form-group">
+                  <label for="linkedin"
+                    ><i class="ri-linkedin-box-fill"></i> LinkedIn</label
+                  >
+                  <input type="text" id="linkedin" placeholder="/in/usuario" />
+                </div>
+
+                <div class="form-group radio-container">
+                  <label
+                    ><i class="ri-mail-send-line"></i> Notificações via
+                    E-mail</label
+                  >
+                  <div class="radio-options">
+                    <label class="radio-option">
+                      <input type="radio" name="notificacaoEmail" value="sim" />
+                      Sim
+                    </label>
+                    <label class="radio-option">
+                      <input type="radio" name="notificacaoEmail" value="nao" />
+                      Não
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Passo 6 -->
+            <fieldset class="step card">
+              <legend class="card-header">Pagamento e Dados Bancários</legend>
+              <div class="card-body form-grid">
+                <div class="form-group">
+                  <label for="cartao"
+                    ><i class="ri-bank-card-line"></i> Número do Cartão de
+                    Crédito</label
+                  >
+                  <input type="text" id="cartao" />
+                </div>
+
+                <div class="form-group">
+                  <label for="vencimentoCartao"
+                    ><i class="ri-calendar-line"></i> Data de Vencimento</label
+                  >
+                  <input type="month" id="vencimentoCartao" />
+                </div>
+
+                <div class="form-group">
+                  <label for="cvv"
+                    ><i class="ri-lock-password-line"></i> Código de Segurança
+                    (CVV)</label
+                  >
+                  <input type="number" id="cvv" />
+                </div>
+
+                <div class="form-group">
+                  <label for="banco"><i class="ri-bank-line"></i> Banco</label>
+                  <select id="banco">
+                    <option>Banco do Brasil</option>
+                    <option>Caixa</option>
+                    <option>Bradesco</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="agencia"
+                    ><i class="ri-building-line"></i> Agência</label
+                  >
+                  <input type="text" id="agencia" />
+                </div>
+
+                <div class="form-group">
+                  <label for="conta"
+                    ><i class="ri-file-list-line"></i> Conta Corrente</label
+                  >
+                  <input type="text" id="conta" />
+                </div>
+
+                <div class="form-group">
+                  <label for="tipoConta"
+                    ><i class="ri-bank-line"></i> Tipo de Conta</label
+                  >
+                  <select id="tipoConta">
+                    <option>Poupança</option>
+                    <option>Corrente</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Passo 7 -->
+            <fieldset class="step card">
+              <legend class="card-header">Outros Recursos</legend>
+              <div class="card-body form-grid">
+                <div class="form-group">
+                  <label for="documentoPdf"
+                    ><i class="ri-file-pdf-line"></i> Upload de Documento
+                    PDF</label
+                  >
+                  <input type="file" id="documentoPdf" accept=".pdf" />
+                </div>
+
+                <div class="form-group radio-container">
+                  <label
+                    ><i class="ri-question-line"></i> Aceita os Termos?</label
+                  >
+                  <div class="radio-options">
+                    <label class="radio-option">
+                      <input type="radio" name="aceitaTermos" value="sim" /> Sim
+                    </label>
+                    <label class="radio-option">
+                      <input type="radio" name="aceitaTermos" value="nao" /> Não
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="horarioContato"
+                    ><i class="ri-time-line"></i> Horário de Preferência para
+                    Contato</label
+                  >
+                  <input type="time" id="horarioContato" />
+                </div>
+
+                <div class="form-group">
+                  <label for="dependentes"
+                    ><i class="ri-user-add-line"></i> Número de
+                    Dependentes</label
+                  >
+                  <input type="number" id="dependentes" />
+                </div>
+
+                <div class="form-group">
+                  <label for="corFavorita"
+                    ><i class="ri-palette-line"></i> Cor Favorita</label
+                  >
+                  <input type="color" id="corFavorita" value="#563d7c" />
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="comentarios"
+                    ><i class="ri-chat-1-line"></i> Comentários ou
+                    Observações</label
+                  >
+                  <textarea id="comentarios" rows="3"></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Navegação -->
+            <nav class="botao-container">
+              <button type="button" id="prevBtn" class="btn-secondary">
+                Anterior
+              </button>
+              <div class="botoes-direita">
+                <button type="reset" class="btn-limpar">
+                  <i class="bi bi-x-circle"></i> Limpar
+                </button>
+                <button type="button" id="nextBtn" class="btn-primary">
+                  Próximo
+                </button>
+                <button type="submit" id="submitBtn" class="btn-salvar d-none">
+                  <i class="bi bi-check-circle"></i> Salvar
+                </button>
+              </div>
+            </nav>
+          </form>
+        </section>
+      </main>
+
+      <!-- Rodapé -->
+      <footer class="footer-fixo">
+        <p>&copy; 2025 Cadastro de Usuário</p>
+      </footer>
     </div>
-  </aside>
 
-  <!-- Overlay Mobile -->
-  <div class="overlay"></div>
-
-  <!-- Conteúdo Principal -->
-  <div class="main-content">
-
-    <!-- Cabeçalho -->
-    <header class="app-header">
-      <button id="menuToggle" class="menu-toggle" aria-label="Abrir menu">
-        <i class="ri-menu-line"></i>
-      </button>
-      <h1>Cadastro de Usuário</h1>
-    </header>
-
-    <!-- Área Principal -->
-    <main class="main-container">
-
-      <!-- Barra de Progresso -->
-      <section class="progress-section">
-        <div class="progress">
-          <div class="progress-bar">1 de 7</div>
-        </div>
-      </section>
-
-      <!-- Formulário -->
-      <section aria-label="Formulário de Cadastro">
-        <form id="cadastroForm" class="form-cadastro">
-
-          <!-- Passo 1 -->
-          <fieldset class="step active card">
-            <legend class="card-header">Informações Pessoais</legend>
-            <div class="card-body form-grid">
-
-              <div class="form-group">
-                <label for="nome"><i class="ri-user-line"></i> Nome Completo</label>
-                <input type="text" id="nome" required />
-              </div>
-
-              <div class="form-group">
-                <label for="nascimento"><i class="ri-calendar-line"></i> Data de Nascimento</label>
-                <input type="date" id="nascimento" />
-              </div>
-
-              <div class="form-group">
-                <label for="sexo"><i class="ri-user-heart-line"></i> Sexo</label>
-                <select id="sexo">
-                  <option>Masculino</option>
-                  <option>Feminino</option>
-                  <option>Outro</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="cpf"><i class="ri-profile-line"></i> CPF</label>
-                <input type="text" id="cpf" placeholder="000.000.000-00" />
-              </div>
-
-              <div class="form-group">
-                <label for="rg"><i class="ri-file-user-line"></i> RG</label>
-                <input type="text" id="rg" />
-              </div>
-
-              <div class="form-group">
-                <label for="estadoCivil"><i class="ri-team-line"></i> Estado Civil</label>
-                <select id="estadoCivil">
-                  <option>Solteiro(a)</option>
-                  <option>Casado(a)</option>
-                  <option>Divorciado(a)</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="fotoPerfil"><i class="ri-image-line"></i> Foto de Perfil</label>
-                <input type="file" id="fotoPerfil" />
-              </div>
-
-              <div class="form-group">
-                <label for="assinaturaDigital"><i class="ri-edit-2-line"></i> Assinatura Digital</label>
-                <input type="file" id="assinaturaDigital" />
-              </div>
-
-            </div>
-          </fieldset>
-
-          <!-- Passo 2 -->
-          <fieldset class="step card">
-            <legend class="card-header">Contato</legend>
-            <div class="card-body form-grid">
-
-              <div class="form-group">
-                <label for="email"><i class="ri-mail-line"></i> E-mail</label>
-                <input type="email" id="email" />
-              </div>
-
-              <div class="form-group">
-                <label for="telefone"><i class="ri-phone-line"></i> Telefone</label>
-                <input type="text" id="telefone" />
-              </div>
-
-              <div class="form-group">
-                <label for="celular"><i class="ri-smartphone-line"></i> Celular</label>
-                <input type="text" id="celular" />
-              </div>
-
-              <div class="form-group">
-                <label for="endereco"><i class="ri-map-pin-line"></i> Endereço</label>
-                <input type="text" id="endereco" placeholder="Digite seu endereço" />
-              </div>
-
-              <div class="form-group">
-                <label for="cep"><i class="ri-map-pin-time-line"></i> CEP</label>
-                <input type="text" id="cep" />
-              </div>
-
-              <div class="form-group">
-                <label for="pais"><i class="ri-earth-line"></i> País</label>
-                <select id="pais">
-                  <option>Brasil</option>
-                  <option>Outro</option>
-                </select>
-              </div>
-
-            </div>
-          </fieldset>
-
-          <!-- Passo 3 -->
-          <fieldset class="step card">
-            <legend class="card-header">Credenciais de Acesso</legend>
-            <div class="card-body form-grid">
-
-              <div class="form-group">
-                <label for="usuario"><i class="ri-user-line"></i> Nome de Usuário</label>
-                <input type="text" id="usuario" />
-              </div>
-
-              <div class="form-group">
-                <label for="senha"><i class="ri-lock-password-line"></i> Senha</label>
-                <input type="password" id="senha" />
-              </div>
-
-              <div class="form-group">
-                <label for="confirmaSenha"><i class="ri-lock-unlock-line"></i> Confirmação de Senha</label>
-                <input type="password" id="confirmaSenha" />
-              </div>
-
-              <div class="form-group">
-                <label for="perguntaSecreta"><i class="ri-question-line"></i> Pergunta Secreta</label>
-                <select id="perguntaSecreta">
-                  <option>Nome do primeiro animal de estimação</option>
-                  <option>Nome da mãe</option>
-                  <option>Melhor amigo de infância</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="respostaSecreta"><i class="ri-key-line"></i> Resposta Secreta</label>
-                <input type="text" id="respostaSecreta" />
-              </div>
-
-              <div id="aceita-termos-container" class="form-group checkbox-container">
-                <label for="aceitaTermos" class="checkbox-label">
-                  <input type="checkbox" id="aceitaTermos" />
-                  Aceito os Termos de Uso
-                </label>
-              </div>
-
-            </div>
-          </fieldset>
-
-          <!-- Passo 4 -->
-          <fieldset class="step card">
-            <legend class="card-header">Informações Profissionais</legend>
-            <div class="card-body form-grid">
-
-              <div class="form-group">
-                <label for="ocupacao"><i class="ri-briefcase-line"></i> Ocupação</label>
-                <input type="text" id="ocupacao" />
-              </div>
-
-              <div class="form-group">
-                <label for="empresa"><i class="ri-building-line"></i> Empresa</label>
-                <input type="text" id="empresa" />
-              </div>
-
-              <div class="form-group">
-                <label for="cnpj"><i class="ri-file-text-line"></i> CNPJ da Empresa</label>
-                <input type="text" id="cnpj" />
-              </div>
-
-              <div class="form-group">
-                <label for="cargo"><i class="ri-user-star-line"></i> Cargo</label>
-                <input type="text" id="cargo" />
-              </div>
-
-              <div class="form-group">
-                <label for="salario"><i class="ri-money-dollar-circle-line"></i> Salário Aproximado</label>
-                <input type="number" id="salario" />
-              </div>
-
-              <div class="form-group">
-                <label for="admissao"><i class="ri-calendar-check-line"></i> Data de Admissão</label>
-                <input type="date" id="admissao" />
-              </div>
-
-            </div>
-          </fieldset>
-
-          <!-- Passo 5 -->
-          <fieldset class="step card">
-            <legend class="card-header">Preferências e Redes Sociais</legend>
-            <div class="card-body form-grid">
-
-              <div class="form-group">
-                <label><i class="ri-gamepad-line"></i> Hobbies</label>
-                <div class="hobbies-options">
-                  <label><input type="checkbox" id="futebol" /> Futebol</label>
-                  <label><input type="checkbox" id="leitura" /> Leitura</label>
-                  <label><input type="checkbox" id="viagens" /> Viagens</label>
-                  <label><input type="checkbox" id="musica" /> Música</label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="generoMusical"><i class="ri-music-2-line"></i> Gênero Musical Favorito</label>
-                <input type="text" id="generoMusical" placeholder="Ex: Rock, Jazz, MPB..." />
-              </div>
-
-              <div class="form-group">
-                <label for="facebook"><i class="ri-facebook-box-fill"></i> Facebook</label>
-                <input type="text" id="facebook" placeholder="@usuario" />
-              </div>
-
-              <div class="form-group">
-                <label for="instagram"><i class="ri-instagram-line"></i> Instagram</label>
-                <input type="text" id="instagram" placeholder="@usuario" />
-              </div>
-
-              <div class="form-group">
-                <label for="linkedin"><i class="ri-linkedin-box-fill"></i> LinkedIn</label>
-                <input type="text" id="linkedin" placeholder="/in/usuario" />
-              </div>
-
-              <div class="form-group radio-container">
-                <label><i class="ri-mail-send-line"></i> Notificações via E-mail</label>
-                <div class="radio-options">
-                  <label class="radio-option">
-                    <input type="radio" name="notificacaoEmail" value="sim" /> Sim
-                  </label>
-                  <label class="radio-option">
-                    <input type="radio" name="notificacaoEmail" value="nao" /> Não
-                  </label>
-                </div>
-              </div>
-
-            </div>
-          </fieldset>
-
-          <!-- Passo 6 -->
-          <fieldset class="step card">
-            <legend class="card-header">Pagamento e Dados Bancários</legend>
-            <div class="card-body form-grid">
-
-              <div class="form-group">
-                <label for="cartao"><i class="ri-bank-card-line"></i> Número do Cartão de Crédito</label>
-                <input type="text" id="cartao" />
-              </div>
-
-              <div class="form-group">
-                <label for="vencimentoCartao"><i class="ri-calendar-line"></i> Data de Vencimento</label>
-                <input type="month" id="vencimentoCartao" />
-              </div>
-
-              <div class="form-group">
-                <label for="cvv"><i class="ri-lock-password-line"></i> Código de Segurança (CVV)</label>
-                <input type="number" id="cvv" />
-              </div>
-
-              <div class="form-group">
-                <label for="banco"><i class="ri-bank-line"></i> Banco</label>
-                <select id="banco">
-                  <option>Banco do Brasil</option>
-                  <option>Caixa</option>
-                  <option>Bradesco</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="agencia"><i class="ri-building-line"></i> Agência</label>
-                <input type="text" id="agencia" />
-              </div>
-
-              <div class="form-group">
-                <label for="conta"><i class="ri-file-list-line"></i> Conta Corrente</label>
-                <input type="text" id="conta" />
-              </div>
-
-              <div class="form-group">
-                <label for="tipoConta"><i class="ri-bank-line"></i> Tipo de Conta</label>
-                <select id="tipoConta">
-                  <option>Poupança</option>
-                  <option>Corrente</option>
-                </select>
-              </div>
-
-            </div>
-          </fieldset>
-
-          <!-- Passo 7 -->
-          <fieldset class="step card">
-            <legend class="card-header">Outros Recursos</legend>
-            <div class="card-body form-grid">
-
-              <div class="form-group">
-                <label for="documentoPdf"><i class="ri-file-pdf-line"></i> Upload de Documento PDF</label>
-                <input type="file" id="documentoPdf" accept=".pdf" />
-              </div>
-
-              <div class="form-group radio-container">
-                <label><i class="ri-question-line"></i> Aceita os Termos?</label>
-                <div class="radio-options">
-                  <label class="radio-option">
-                    <input type="radio" name="aceitaTermos" value="sim" /> Sim
-                  </label>
-                  <label class="radio-option">
-                    <input type="radio" name="aceitaTermos" value="nao" /> Não
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="horarioContato"><i class="ri-time-line"></i> Horário de Preferência para Contato</label>
-                <input type="time" id="horarioContato" />
-              </div>
-
-              <div class="form-group">
-                <label for="dependentes"><i class="ri-user-add-line"></i> Número de Dependentes</label>
-                <input type="number" id="dependentes" />
-              </div>
-
-              <div class="form-group">
-                <label for="corFavorita"><i class="ri-palette-line"></i> Cor Favorita</label>
-                <input type="color" id="corFavorita" value="#563d7c" />
-              </div>
-
-              <div class="form-group full-width">
-                <label for="comentarios"><i class="ri-chat-1-line"></i> Comentários ou Observações</label>
-                <textarea id="comentarios" rows="3"></textarea>
-              </div>
-
-            </div>
-          </fieldset>
-
-          <!-- Navegação -->
-          <nav class="botao-container">
-            <button type="button" id="prevBtn" class="btn-secondary">Anterior</button>
-            <div class="botoes-direita">
-              <button type="reset" class="btn-limpar"><i class="bi bi-x-circle"></i> Limpar</button>
-              <button type="button" id="nextBtn" class="btn-primary">Próximo</button>
-              <button type="submit" id="submitBtn" class="btn-salvar d-none"><i class="bi bi-check-circle"></i> Salvar</button>
-            </div>
-          </nav>
-
-        </form>
-      </section>
-
-    </main>
-
-    <!-- Rodapé -->
-    <footer class="footer-fixo">
-      <p>&copy; 2025 Cadastro de Usuário</p>
-    </footer>
-
-  </div>
-
-  <script src="js/script.js"></script>
-</body>
-
+    <script src="js/script.js"></script>
+  </body>
 </html>
