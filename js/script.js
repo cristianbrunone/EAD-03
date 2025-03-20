@@ -9,13 +9,16 @@ menuToggle.addEventListener("click", () => {
   sidebar.classList.toggle("open");
   overlay.classList.toggle("active");
 
-  const expanded = menuToggle.getAttribute("aria-expanded") === "true";
-  menuToggle.setAttribute("aria-expanded", !expanded);
+  const isOpen = sidebar.classList.contains("open");
 
-  if (sidebar.classList.contains("open")) {
-    menuToggle.style.display = "none";
+  if (window.innerWidth <= 768) {
+    menuToggle.setAttribute("aria-expanded", isOpen);
+    menuToggle.innerHTML = isOpen
+      ? `<i class="ri-close-line"></i>`
+      : `<i class="ri-menu-line"></i>`;
   }
 });
+
 
 overlay.addEventListener("click", () => {
   sidebar.classList.remove("open");
@@ -136,7 +139,7 @@ function showStep(index) {
 
   const progress = ((index + 1) / steps.length) * 100;
   progressBar.style.width = `${progress}%`;
-  progressBar.innerText = `Passo ${index + 1} de ${steps.length}`;
+  progressBar.innerText = `${index + 1} de ${steps.length}`;
 }
 
 nextBtn.addEventListener("click", () => {
